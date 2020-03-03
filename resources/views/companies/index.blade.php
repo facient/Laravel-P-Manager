@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+	@include('partials.success')
+	@include('partials.errors')
+	
 	<div class="row">		
 		<div class="list-group col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
 		  <span class="list-group-item list-group-item-action active">

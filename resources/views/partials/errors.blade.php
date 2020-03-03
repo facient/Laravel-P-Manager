@@ -5,6 +5,7 @@
   close</button>
     <span aria-hidden="true">&times;</span>
     @foreach($errors->all() as $error)
-  <li><strong>{!!session()->get('success')!!}</strong></li>
+  		<li><strong>{!!@error!!}</strong></li>
+  	@endforeach
 </div>
 @endif
