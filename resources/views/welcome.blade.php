@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Lara Project Manager
+                    Laravel Project Manager
                 </div>
 
                 <div class="links">
