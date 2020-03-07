@@ -30,7 +30,9 @@
       <div class="sidebar-module">
         <h4>Action</h4>
         <ol class="list-unstyled">
-          <li><a href="#">Add a New User</a></li>
+          <li><a href="/companies">Show Companies List</a></li>
+          <li><a href="/companies/create">Add a Company</a></li>
+          <li><a href="#">Add a Project</a></li>
           <li><a href="/companies/{{$company->id}}/edit">Edit</a></li>
           <li>
           	<a href="#"

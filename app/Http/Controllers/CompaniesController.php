@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
@@ -27,7 +28,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -38,8 +39,20 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        
-    }
+        if (Auth::check()) {
+            $compnay=Company::create([
+                'name'=>$request->input('name'),
+                'description'=> $request->input('description'),
+                'user_id'=>Auth::user()->id
+                ]);
+            if ($compnay) {
+                    return redirect()->route('companies.show',['company'=>$compnay->id])->with('success','New Company is added Successfully');
+            }
+        }
+       
+            return back()->withInput()->with('errors','Login to your Account or Signup');
+        }
+ 
 
     /**
      * Display the specified resource.
@@ -56,7 +69,7 @@ class CompaniesController extends Controller
         // var_dump($companyOne);
        
         // echo "<pre>";
-        // print_r ($companyOne);
+        // print_r ($company);
         // echo "</pre>";
         // echo '<pre>';
         // print_r($companyOne);
