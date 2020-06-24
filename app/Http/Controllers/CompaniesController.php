@@ -49,10 +49,9 @@ class CompaniesController extends Controller
                 'user_id'=>Auth::user()->id
                 ]);
             if ($compnay) {
-                    return redirect()->route('companies.show',['company'=>$compnay->id])->with('success','New Company is added Successfully');
+                    return redirect()->route('companies.index',['company'=>$compnay->id])->with('success','New Company is added Successfully');
             }
-        }
-       
+        }    
             return back()->withInput()->with('errors','Login to your Account or Signup');
         }
  
@@ -134,7 +133,7 @@ class CompaniesController extends Controller
         $findCompany=Company::find($company->id);
         if ($findCompany->delete()) {
             return redirect()->route('companies.index')
-            ->with('success', 'Company Deleted Successfully');
+            ->with('danger', 'Company Deleted Successfully');
         }
         else{
         return back()->withInput()->with('errors','Company Could not be deleted');

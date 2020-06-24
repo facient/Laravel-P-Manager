@@ -10,18 +10,35 @@
 	  <div class="row col-md-12 col-sm-12 col-lg-12" style="background: white; margin: 10px;" >
 	  	<form method="POST" action="{{route('projects.store')}}">
 	  			{{ csrf_field() }}
-	  		<input type="hidden" name="_method" value="post">
+
+
+			@if($company!=null)
+	  		<input type="hidden" name="company_id" value="{{$company->id}}">
+	  		
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Project Name</label><span class="required">*</span>
-			    <input type="text" name="name" spellcheck="true" class="form-control" id="company-name" aria-describedby="emailHelp" required placeholder="Enter Project Name">
-			    
+			    <label for="exampleInputEmail1">
+			    	Project Name for {{$company->name}} Company
+				<span 
+					class="required">*
+				</span>			    
+				</label>
+			    <input type="text" 
+				    name="name" 
+				    spellcheck="true" 
+				    class="form-control" 
+				    id="company-name" 
+				    aria-describedby="emailHelp" 
+				    required 
+				    placeholder="Enter Project Name"
+				    />		    
 			  </div>
 			  <div class="form-group">
-			    <label for="exampleInputPassword1">Description</label>
+			    <label for="exampleInputPassword">Description</label>
 			     <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" value
 			     =""></textarea>
 			  </div>
-  			<button type="submit" class="btn btn-primary">Update</button>
+			@endif
+  			<button type="submit" class="btn btn-primary">Add New Project</button>
 		</form>
 	  </div>
 	</div>

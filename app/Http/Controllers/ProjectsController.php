@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +29,21 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($company_id=null)
         {
-            return view('projects.create');
+            if ($company_id!=null) {
+                $company=Company::find($company_id);
+                // var_dump ($company);
+                // die();
+                
+                return view('projects.create',['company'=>$company]);    
+            }
+            else{
+                $userDetails=Auth::user();
+                // var_dump ($userDetails);
+                // die();
+                return view('projects.create',['userDetails'=>$userDetails]);
+            }
         }
 
     /**
@@ -41,14 +54,19 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+       
         if (Auth::check()) {
-            $compnay=Company::create([
+
+            $project=Project::create([
                 'name'=>$request->input('name'),
                 'description'=> $request->input('description'),
+                'company_id'=> $request->input('company_id'),
                 'user_id'=>Auth::user()->id
                 ]);
-            if ($compnay) {
-                    return redirect()->route('projects.show',['company'=>$compnay->id])->with('success','New Company is added Successfully');
+          
+            if ($project) {
+                return redirect()->route('companies.show',['company'=>$request->input('company_id')])->with('success','New Project is added Successfully');
+            
             }
         }
        
@@ -62,12 +80,12 @@ class ProjectsController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(project $project)
     {
         // print_r($company);
         // var_dump($company);
         // $companyOne=Company::where('id',$company->id)->first();
-        $company=Company::find($company->id);
+        $project=Project::find($project->id);
         // var_dump($companyOne);
        
         // echo "<pre>";
@@ -76,8 +94,8 @@ class ProjectsController extends Controller
         // echo '<pre>';
         // print_r($companyOne);
         // exit();
-
-        return view('projects.show',['company'=>$company]);
+        
+        return view('projects.show',['project'=>$project]);
     }
 
     /**

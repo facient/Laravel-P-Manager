@@ -7,13 +7,13 @@
 
 	<div class="col-md-9 col-lg-9 col-sm-9 pull-left">
 		<div class="jumbotron">      
-	        <h1>{{$company->name}}</h1>
-	        <p class="lead">{{$company->description}}</p>
+	        <h1>{{$project->name}}</h1>
+	        <p class="lead">{{$project->description}}</p>
 	        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>     
 		</div>
 
 	  <!-- Example row of columns -->
-	  <div  class="row" style="background: white; margin: 10px;">
+	<!--   <div  class="row" style="background: white; margin: 10px;">
 	  	@foreach($company->projects as $project)
 	    <div class="col-md-4" >
 	      <h2>{{$project->name}}</h2>
@@ -21,7 +21,7 @@
 	      <p><a class="btn btn-default" href="/projects/{{$project->id}}" role="button">View details »</a></p>
 	    </div>
 	   @endforeach
-	  </div>
+	  </div> -->
 	</div>
 	
 

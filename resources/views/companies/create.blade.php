@@ -7,7 +7,7 @@
 		
 
 	  <!-- Example row of columns -->
-	  <div class="row col-md-12 col-sm-12 col-lg-12" style="background: white; margin: 10px;" >
+	  <div class="row col-md-12 col-sm-12 col-lg-12" style="background: white; margin: 10px; padding: 10px;" >
 	  	<form method="POST" action="{{route('companies.store')}}">
 	  			{{ csrf_field() }}
 	  		<input type="hidden" name="_method" value="post">
@@ -21,7 +21,7 @@
 			     <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" value
 			     =""></textarea>
 			  </div>
-  			<button type="submit" class="btn btn-primary">Update</button>
+  			<button type="submit" class="btn btn-primary">Add A New Company</button>
 		</form>
 	  </div>
 	</div>

@@ -30,10 +30,8 @@
       <div class="sidebar-module">
         <h4>Action</h4>
         <ol class="list-unstyled">
-          <li><a href="/companies">Show Companies List</a></li>
-          <li><a href="/companies/create">Add a Company</a></li>
-          <li><a href="#">Add a Project</a></li>
-          <li><a href="/companies/{{$company->id}}/edit">Edit</a></li>
+          <li><a href="/projects/create/{{$company->id}}">Add Project of This Company</a></li>
+          <li><a href="/companies/{{$company->id}}/edit">Edit Company</a></li>
           <li>
           	<a href="#"
           	onclick="var result=confirm('Are You Sure to Delete this company');
