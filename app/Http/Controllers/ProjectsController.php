@@ -18,7 +18,7 @@ class ProjectsController extends Controller
         {
             //
             if (Auth::check()) {
-            $projects=Project::where('user_id',Auth::user()->id)->get();
+            $projects=Project::where('user_id',Auth::user()->id)->orderBy('created_at','des')->get();
             return view('projects.index',['projects'=> $projects]);
             }
             return view('auth.login');
@@ -86,13 +86,12 @@ class ProjectsController extends Controller
         // var_dump($company);
         // $companyOne=Company::where('id',$company->id)->first();
         $project=Project::find($project->id);
-        // var_dump($companyOne);
+        // var_dump($project);
        
         // echo "<pre>";
-        // print_r ($company);
+        // print_r ($project);
         // echo "</pre>";
-        // echo '<pre>';
-        // print_r($companyOne);
+       
         // exit();
         
         return view('projects.show',['project'=>$project]);
@@ -104,15 +103,15 @@ class ProjectsController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Project $project)
     {
         //
-        $company=Company::find($company->id);
+        $project=Project::find($project->id);
         //  echo '<pre>';
-        // print_r($company);
+        // print_r($project);
         // exit();
 
-        return view('projects.edit',['company'=>$company]);
+        return view('projects.edit',['project'=>$project]);
     }
 
     /**
@@ -122,17 +121,16 @@ class ProjectsController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Project $project)
     {
-        //
-        $companyUpdate=Company::where('id', $company->id)
+        $projectUpdate=Project::where('id', $project->id)
         ->update([
             'name'=>$request->input('name'),
             'description'=>$request->input('description')
         ]);
-        if ($companyUpdate) {
-            return redirect()->route('projects.show',['company'=>$company->id])
-            ->with('success', 'Company Updated Successfully');
+        if ($projectUpdate) {
+            return redirect()->route('projects.show',['project'=>$project->id])
+            ->with('success', 'Project Updated Successfully');
         }
         else{
         return back()->withInput('errors');
@@ -146,15 +144,15 @@ class ProjectsController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Project $project)
     {
-        $findCompany=Company::find($company->id);
-        if ($findCompany->delete()) {
+        $findProject=Project::find($project->id);
+        if ($findProject->delete()) {
             return redirect()->route('projects.index')
-            ->with('success', 'Company Deleted Successfully');
+            ->with('success', 'Project Deleted Successfully');
         }
         else{
-        return back()->withInput()->with('errors','Company Could not be deleted');
+        return back()->withInput()->with('errors','Project Could not be deleted');
             
         }
     }

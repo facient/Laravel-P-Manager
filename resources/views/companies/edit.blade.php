@@ -26,7 +26,7 @@
 	</div>
 	
 
-  <div class="col-md-3 col-lg-3 pull-right">
+  <!-- <div class="col-md-3 col-lg-3 pull-right">
      
       <div class="sidebar-module">
         <h4>Elsewhere</h4>
@@ -36,7 +36,7 @@
           <li><a href="#">Delete</a></li>
         </ol>
       </div>
-  </div>
+  </div> -->
 
 </div>
      

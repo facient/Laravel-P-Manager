@@ -15,15 +15,12 @@
 		  <!-- <a href="/companies/{{$company->id}}/edit">Edit</a> -->
 		  @endforeach		 
 		</div>
-		<div class="col-md-3 col-lg-3 pull-left">     
-		      <div class="sidebar-module">
-		        <h4>Action</h4>
-		        <ol class="list-unstyled">
-		          <li><a href="/companies/create"><button>Add a Company</button></a></li>
-		          
-		        </ol>
-		      </div>
- 	    </div>
+		<div class="pull-left list-group col-md-3 col-lg-3 ">
+		  <span class="list-group-item list-group-item-action active">
+		   Action
+		  </span>
+		  <a href="/companies/create" class="list-group-item list-group-item-action">Add a Company</a>
+		</div>
 		{{-- <div class="list-group col-md-3 col-lg-3 ">
 		  <span class="list-group-item list-group-item-action active">
 		    Action

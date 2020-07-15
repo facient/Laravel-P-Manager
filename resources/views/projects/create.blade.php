@@ -12,31 +12,57 @@
 	  			{{ csrf_field() }}
 
 
-			@if($company!=null)
-	  		<input type="hidden" name="company_id" value="{{$company->id}}">
-	  		
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">
-			    	Project Name for {{$company->name}} Company
-				<span 
-					class="required">*
-				</span>			    
-				</label>
-			    <input type="text" 
-				    name="name" 
-				    spellcheck="true" 
-				    class="form-control" 
-				    id="company-name" 
-				    aria-describedby="emailHelp" 
-				    required 
-				    placeholder="Enter Project Name"
-				    />		    
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword">Description</label>
-			     <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" value
-			     =""></textarea>
-			  </div>
+			@if(isset($company))
+		  		<input type="hidden" name="company_id" value="{{$company->id}}">
+		  		
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Project Name for {{$company->name}} Company
+					<span 
+						class="required">*
+					</span>			    
+					</label>
+				    <input type="text" 
+					    name="name" 
+					    spellcheck="true" 
+					    class="form-control" 
+					    id="company-name" 
+					    aria-describedby="emailHelp" 
+					    required 
+					    placeholder="Enter Project Name"
+					    />		    
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword">Description</label>
+				     <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" value
+				     =""></textarea>
+				  </div>
+			@endif
+			@if(isset($userDetails))
+		  		<input type="hidden" name="user_id" value="{{$userDetails->id}}">
+		  		
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Project Name for {{$userDetails->name}} User
+					<span 
+						class="required">*
+					</span>			    
+					</label>
+				    <input type="text" 
+					    name="name" 
+					    spellcheck="true" 
+					    class="form-control" 
+					    id="company-name" 
+					    aria-describedby="emailHelp" 
+					    required 
+					    placeholder="Enter Project Name"
+					    />		    
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword">Description</label>
+				     <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" value
+				     =""></textarea>
+				  </div>
 			@endif
   			<button type="submit" class="btn btn-primary">Add New Project</button>
 		</form>

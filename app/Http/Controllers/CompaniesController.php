@@ -17,7 +17,7 @@ class CompaniesController extends Controller
     {
         //
         if (Auth::check()) {
-        $companies=Company::where('user_id',Auth::user()->id)->get();
+        $companies=Company::where('user_id',Auth::user()->id)->orderBy('created_at', 'des')->get();
         return view('companies.index',['companies'=> $companies]);
         }
         return view('auth.login');
